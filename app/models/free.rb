@@ -1,0 +1,2 @@
+class Free < User
+end

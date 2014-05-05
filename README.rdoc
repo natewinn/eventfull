@@ -1,0 +1,55 @@
+Remember App
+
+User
+has_many :events
+has_many :photos, through: :events
+
+	STI for User
+	class Pro < User
+	class Free < User
+
+rails generate model user username:string email:string password:string birthday:date 
+
+Events
+belongs to :user
+has_many :photos
+has_many :comments, as: :commentable
+
+rails generate model event event_name:string event_date:date || user_id:integer
+
+Photos
+belongs to :events
+has_and_belongs_to_many :tags
+has_many :comments, as: :commentable
+
+rails generate model photo photo_name:string photo_date:date || event_id:integer  
+
+Tags 
+has_and_belongs_to_many :photos
+
+Photos_Tags
+
+rails generate model CreatePhotosAndTags photo_id:integer tag_id:integer
+
+Comments
+belongs_to :commentable, polymorphic: true
+
+rails generate model comment commenter:string comment_date:date comment_text:text || commentable_id:integer commentable_type:string
+
+Requirements
+1. Create a photo and an event (CRUD)
+2. Upload an image to an event (carrier wave)
+3.  Look at a photo and an event and be able to add comments to an individual one
+4. Be able to add tags to a photo
+5.Ssee a list of photos and events (one list total or one for each - you decide)
+
+
+Single Table Inheritance
+http://api.rubyonrails.org/classes/ActiveRecord/Base.html#label-Single+table+inheritance
+http://blog.thirst.co/post/14885390861/rails-single-table-inheritance
+
+Has and Belongs to Many
+http://guides.rubyonrails.org/association_basics.html#the-has-and-belongs-to-many-association
+
+Polymorphic
+http://guides.rubyonrails.org/association_basics.html#polymorphic-associations

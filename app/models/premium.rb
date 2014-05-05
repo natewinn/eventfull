@@ -1,0 +1,2 @@
+class Premium < User
+end
