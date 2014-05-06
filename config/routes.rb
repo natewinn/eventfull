@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  
+  resources :comments
+  resources :events
+  resources :photos do
+    member do
+      get :download_image
+      end
+    end
+  resources :tags
+  resources :users
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

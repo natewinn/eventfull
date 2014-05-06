@@ -1,0 +1,21 @@
+.row
+  - @photos.each do |m|
+    .col-md-4
+      .thumbnail
+        %img{:src => m.image}
+        .caption
+          %h3 m.photo_name
+          %p ...
+          %p
+            %a.btn.btn-primary{href: "#", role: "button"} Button
+            %a.btn.btn-default{href: "#", role: "button"} Button
+.row
+  .col-sm-6.col-md-4
+    .thumbnail
+      %img{alt: "...", "data-src" => "holder.js/300x200"}/
+      .caption
+        %h3 
+        %p ...
+        %p
+          %a.btn.btn-primary{href: "#", role: "button"} Button
+          %a.btn.btn-default{href: "#", role: "button"} Button
