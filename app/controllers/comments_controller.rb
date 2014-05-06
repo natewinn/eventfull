@@ -13,9 +13,10 @@ class CommentsController < ApplicationController
 	end
 
 	def create
-		@photo = Photo.find(params[commentable_id])
-		@comment = @photo.comments.create(comment_params)
-		redirect_to comments_path
+		@new_comment = Comment.new(comment_params)
+		if @new_comment.save
+			redirect_to :back
+		end
 	end
 
 	def edit

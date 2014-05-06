@@ -1,0 +1,21 @@
+= @photo.photo_name 
+%img{ :src => @photo.image }
+= @commentable_id
+%br
+- @photo.comments.each do |t|
+	= t.comment_date
+	= t.comment_text
+
+=form_for @new_comment, url: comments_path, method: :post do |f|
+	=f.hidden_field :commentable_id, value: @photo.id
+	=f.hidden_field :commentable_type, value: "Photo"
+	= f.label :commenter
+	= f.text_field :commenter
+	%br
+	= f.label :comment_date
+	= f.date_field :comment_date
+	%br
+	= f.label :comment_text
+	= f.text_field :comment_text
+	%br
+	=f.submit "Add Note"
