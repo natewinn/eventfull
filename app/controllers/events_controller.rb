@@ -2,6 +2,7 @@ class EventsController < ApplicationController
 
 	def index
 		@events = Event.all
+		@photos = Photo.all
 	end
 
 	def new

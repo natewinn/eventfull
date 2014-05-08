@@ -1,21 +1,24 @@
-.row
-  - @photos.each do |m|
-    .col-md-4
-      .thumbnail
-        %img{:src => m.image}
-        .caption
-          %h3 m.photo_name
-          %p ...
-          %p
-            %a.btn.btn-primary{href: "#", role: "button"} Button
-            %a.btn.btn-default{href: "#", role: "button"} Button
-.row
-  .col-sm-6.col-md-4
-    .thumbnail
-      %img{alt: "...", "data-src" => "holder.js/300x200"}/
-      .caption
-        %h3 
-        %p ...
-        %p
-          %a.btn.btn-primary{href: "#", role: "button"} Button
-          %a.btn.btn-default{href: "#", role: "button"} Button
+.top-section
+  .row
+    .medium-6.large-8.columns
+      %img.th{src: "http://cdn2.hubspot.net/hub/53/file-284457485-jpg/Blog-Related_Images/computer-stock-photo.jpg"}
+      %p
+      %h3 Photo Title
+      %p Tote bag cred tofu stumptown keytar beard, ethnic Marfa ugh 90's fashion axe. Fanny pack blog chia, cred pickled viral shabby chic yr. Hashtag wayfarers asymmetrical, chillwave fixie Pinterest meggings letterpress blog. Small batch Tumblr artisan cliche, dreamcatcher single-origin coffee pickled Neutra occupy freegan Pitchfork cray.
+    .medium-6.large-4.columns
+      %ul.pricing-table
+        %li.title Tag Your Photo
+        %li.cta-button
+          %input{placeholder: "", type: "text"}
+          %a.expand.small.secondary.button{"data-src-download" => "5.2.2", href: "#", title: "Photo Title Here"}Click to tag
+          %span.round.alert.label Round Alert Label
+          %span.round.alert.label Round Alert Label
+          %span.round.alert.label Round Alert Label
+          %span.round.alert.label Round Alert Label
+          %span.round.alert.label Round Alert Label
+          %span.round.alert.label Round Alert Label
+          %span.round.alert.label Round Alert Label
+          %span.round.alert.label Round Alert Label
+          %span.round.alert.label Round Alert Label
+          %span.round.alert.label Round Alert Label
+      %a.expand.small.button{href: "#", title: "Photo Title Here"}Return to Photos

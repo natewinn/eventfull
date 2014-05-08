@@ -1,6 +1,31 @@
-.container_form
-	.col-lg-8
-		= f.label :photo_name, class: "inline"
-		= f.text_field :photo_name, class: "form-control col-sm-6 inline"
-		%br
-		= f.file_field :image
+= @photo.photo_name 
+%img{ :src => @photo.image }
+%br
+- @photo.comments.each do |t|
+	= t.comment_date
+	= t.comment_text
+
+=form_for @new_comment, url: comments_path, method: :post do |f|
+	=f.hidden_field :commentable_id, value: @photo.id
+	=f.hidden_field :commentable_type, value: "Photo"
+	= f.label :commenter
+	= f.text_field :commenter
+	%br
+	= f.label :comment_date
+	= f.date_field :comment_date
+	%br
+	= f.label :comment_text
+	= f.text_field :comment_text
+	%br
+	=f.submit "Add Note"
+
+	.row
+  .col-sm-6.col-md-4
+    .thumbnail
+      %img{alt: "...", "data-src" => "holder.js/300x200"}/
+      .caption
+        %h3 
+        %p ...
+        %p
+          %a.btn.btn-primary{href: "#", role: "button"} Button
+          %a.btn.btn-default{href: "#", role: "button"} Button

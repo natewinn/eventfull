@@ -1,21 +1,24 @@
-= @photo.photo_name 
-%img{ :src => @photo.image }
-= @commentable_id
-%br
-- @photo.comments.each do |t|
-	= t.comment_date
-	= t.comment_text
-
-=form_for @new_comment, url: comments_path, method: :post do |f|
-	=f.hidden_field :commentable_id, value: @photo.id
-	=f.hidden_field :commentable_type, value: "Photo"
-	= f.label :commenter
-	= f.text_field :commenter
-	%br
-	= f.label :comment_date
-	= f.date_field :comment_date
-	%br
-	= f.label :comment_text
-	= f.text_field :comment_text
-	%br
-	=f.submit "Add Note"
+.top-section
+  .row
+    .medium-6.large-8.columns
+      %img.th{ :alt => @photo.photo_name, :src => @photo.image }
+      %p
+      %h3
+        = @photo.photo_name
+      %h3 
+        = @photo.photo_date
+      %p Tote bag cred tofu stumptown keytar beard, ethnic Marfa ugh 90's fashion axe. Fanny pack blog chia, cred pickled viral shabby chic yr. Hashtag wayfarers asymmetrical, chillwave fixie Pinterest meggings letterpress blog. Small batch Tumblr artisan cliche, dreamcatcher single-origin coffee pickled Neutra occupy freegan Pitchfork cray.
+    
+    .medium-6.large-4.columns
+      %ul.pricing-table
+        %li.title Tag Your Photo
+        %li.cta-button
+          = form_for @new_tag, url: tags_path, method: :post do |f| 
+            = f.text_field :tag_name
+            = hidden_field_tag :photo_id, @photo.id
+            = f.submit "Click to tag", class: "expand small secondary button"
+          
+          - @photo.tags.each do |t|
+            %span.round.alert.label
+              = t.tag_name 
+      %a.expand.small.button{ href: events_path }Return to Photos

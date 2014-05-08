@@ -3,10 +3,70 @@
 <head>
   <title>Remember</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" />
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
+
+<!-- Navigation Logo -->
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href= "events_path" >Remember When</a></h1>
+    </li>
+  </ul>
+
+  <!-- Navigation Links -->
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="#" class="">Events</a>
+        <ul class="dropdown">
+          <li><a href="#">Features</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-form">
+        <a class="small button" href="#" data-reveal-id="myModal">Upload Photo</a>
+    </ul>
+  </section>
+</nav>
+
+<!-- Modal -->
+<div id="myModal" class="reveal-modal" data-reveal>
+  <h2>This</h2>
+    <p class="lead">Your couch.  It is mine.</p>
+    <p>Im a cool paragraph that lives inside of an even cooler modal. Wins</p>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<!-- Mobile Navigation -->
+<nav class="tab-bar show-for-small">
+	<a class="left-off-canvas-toggle menu-icon">
+		<span>Remember</span>
+	</a>
+</nav>
+
+<!-- Header -->
+<header>
+  <div class="row">
+    <div class="small-12 columns">
+      <h1>Remember Memorable Events</h1>
+      <h4>Add comments and tags your photos.</h4>
+    </div>
+  </div>
+</header>
+
+<!-- Breadcrumbs -->
+<nav class="breadcrumbs">
+  <div class="medium-6 small-3 columns"></div>
+  <a href="#">Home</a>
+  <a href="#">Features</a>
+  <a class="current" href="#">Cloning</a>
+</nav>
 
 <%= yield %>
 

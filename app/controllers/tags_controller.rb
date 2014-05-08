@@ -13,11 +13,11 @@ class TagsController < ApplicationController
 	end
 
 	def create
-		@new_tag = Tag.new(photo_params)
+		@new_tag = Tag.where(tag_params).first_or_create
+		@photo = Photo.find(params[:photo_id])
 		if @new_tag.save
-			redirect_to tags_path
-		else
-			redirect_to new_tag_path
+			@photo.tags << @new_tag
+				redirect_to :back
 		end
 	end
 
@@ -42,7 +42,7 @@ class TagsController < ApplicationController
 
 	private
 
-	def tags_params
+	def tag_params
 		params.require(:tag).permit!
 	end
 end

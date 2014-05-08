@@ -10,8 +10,9 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require bootstrap.min
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require foundation.min
+//= require foundation.reveal
 //= require_tree .

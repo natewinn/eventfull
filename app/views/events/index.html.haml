@@ -1,0 +1,9 @@
+.top-section
+  .row
+    .medium-6.large-3.columns
+      - @photos.each do |f| 
+        %h5 
+          = f.photo_name
+        %img.th{ src: f.image }
+        %p
+        %a.expand.small.secondary.button{ href: photo_path(f) } View Photo

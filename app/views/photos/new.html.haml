@@ -1,16 +1,37 @@
-%h1 Upload a photo
-=form_for @new_photo, url: photos_path do |f|
-	= render "form", f: f
-	= f.submit "Create New"
-%h1 Add a comment
-=form_for @photo.comment do |f|
-	= f.label :commenter
-	= f.text_field :commenter
-	%br
-	= f.label :comment_date
-	= f.text_field :comment_date
-	%br
-	= f.label :comment_text
-	= f.text_field :comment_text
-	%br
-	= f.submit
+.top-section
+	.row
+		.large-8.column
+			%form
+				%fieldset
+					%legend Upload Your Photo
+					= form_for @new_photo, url: photos_path, method: :post do |f|
+						%label Photo Name
+						= f.text_field :photo_name
+						%br
+						%label Photo Date
+						= f.date_field :photo_date
+						%label Choose Your Photo
+						= f.file_field :image
+						%p						
+						= f.submit "Upload Photo", class: "default button"
+		
+		.large-4.column
+			%form
+				%fieldset
+					%legend Popular Pics
+					.small-6.column.centered
+						- @photos.each do |f|	
+							%img.th{ src: f.image }
+							%p
+							%img.th{ src: f.image }
+							%p
+							%img.th{ src: f.image }
+					.small-6.column.centered
+						- @photos.each do |f|	
+							%img.th{ src: f.image }
+							%p
+							%img.th{ src: f.image }
+							%p
+							%img.th{ src: f.image }
+				%a.expand.small.button{ href: photos_path }
+					Return to Photos
