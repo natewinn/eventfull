@@ -15,13 +15,13 @@
  *= require_self
  */
 
-/* Font */
 h1, h2, h3, h4, h5, h6 { font-family: Open Sans }
 body { font-family: Open Sans }
 html { font-family: Open Sans }
 p { font-family: Open Sans }
 a { font-family: Open Sans }
-.button { font-family: Open Sans }
+
+.top-bar-section ul li > a.button { font-family: Open Sans; background-color: #074e68; border-color: #00141B; }
 
 .top-section {
 	margin: 44px 0 22px;

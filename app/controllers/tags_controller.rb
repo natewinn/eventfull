@@ -16,7 +16,7 @@ class TagsController < ApplicationController
 		@new_tag = Tag.where(tag_params).first_or_create
 		@photo = Photo.find(params[:photo_id])
 		if @new_tag.save
-			@photo.tags << @new_tag
+			@photo.tags << @new_tag unless @photo.tags.exists?(@new_tag)
 				redirect_to :back
 		end
 	end

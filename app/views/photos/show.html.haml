@@ -1,16 +1,57 @@
+/ - Page Title -/
+- content_for(:title, @photo.photo_name)
+
+/ - Breadcrumb Nav -/
+%nav.breadcrumbs
+  .medium-6.small-3.columns
+  %a{ href: events_path } Home
+  %a.current{ href: photo_path(:id) } 
+    = @photo.photo_name
+
 .top-section
   .row
+    
+    / - Photo Content -/
     .medium-6.large-8.columns
       %img.th{ :alt => @photo.photo_name, :src => @photo.image }
       %p
       %h3
         = @photo.photo_name
-      %h3 
-        = @photo.photo_date
+      %h5 
+        = format_date(@photo.photo_date)
       %p Tote bag cred tofu stumptown keytar beard, ethnic Marfa ugh 90's fashion axe. Fanny pack blog chia, cred pickled viral shabby chic yr. Hashtag wayfarers asymmetrical, chillwave fixie Pinterest meggings letterpress blog. Small batch Tumblr artisan cliche, dreamcatcher single-origin coffee pickled Neutra occupy freegan Pitchfork cray.
-    
+      %p
+      
+      /- Display Comments -/
+      -@photo.comments.each do |f|
+        / - next if @photo.comments.new?
+        %blockquote
+          = f.comment_text
+          %cite
+            = f.commenter
+
+      / - Add Comment Form -/
+      %fieldset
+        %legend Add a Comment
+        =form_for @new_comment do |f|
+          =f.hidden_field :commentable_id, value: @photo.id
+          =f.hidden_field :commentable_type, value: "Photo"
+          .small-6.columns
+            = f.label "Name:"
+            = f.text_field :commenter
+          .small-6.columns
+            = f.label "Date:"
+            = f.date_field :comment_date
+          .small-12.columns
+            = f.label "Your Comment:"
+            = f.text_field :comment_text
+            %br
+            =f.submit "Post Comment", class: "default button"
+
     .medium-6.large-4.columns
       %ul.pricing-table
+        
+        / - Add Photo Tags Form -/
         %li.title Tag Your Photo
         %li.cta-button
           = form_for @new_tag, url: tags_path, method: :post do |f| 
@@ -18,7 +59,10 @@
             = hidden_field_tag :photo_id, @photo.id
             = f.submit "Click to tag", class: "expand small secondary button"
           
+          / - Display Tags -/
           - @photo.tags.each do |t|
             %span.round.alert.label
               = t.tag_name 
+      
+      / - Homepage Button -/
       %a.expand.small.button{ href: events_path }Return to Photos

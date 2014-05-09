@@ -18,11 +18,20 @@ class PhotosController < ApplicationController
 	def create
 		@new_photo = Photo.new(photo_params)
 		if @new_photo.save
-			redirect_to photos_path
+			redirect_to events_path
 		else
 			redirect_to new_photo_path
 		end
 	end
+
+	def random_photo
+		@photos = []
+		until @photos.count == 8 do
+		photo = Photo.find(rand(1..Photo.all.count))
+		@photos << photo unless @photos.include?(photo)
+	end
+
+	end	
 
 	def edit
 		@photo = Photo.find(params [:id])

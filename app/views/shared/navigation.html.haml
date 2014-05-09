@@ -1,0 +1,4 @@
+.history-nav
+  - nav.each do |n|
+    = link_to n[:title], n[:url]
+  = link_to yield(:title), request.path, :class => 'no-link'
