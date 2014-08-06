@@ -14,5 +14,4 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require foundation.min
-//= require foundation.reveal
 //= require_tree .

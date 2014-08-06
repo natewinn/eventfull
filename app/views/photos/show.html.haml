@@ -19,12 +19,14 @@
         = @photo.photo_name
       %h5 
         = format_date(@photo.photo_date)
-      %p Tote bag cred tofu stumptown keytar beard, ethnic Marfa ugh 90's fashion axe. Fanny pack blog chia, cred pickled viral shabby chic yr. Hashtag wayfarers asymmetrical, chillwave fixie Pinterest meggings letterpress blog. Small batch Tumblr artisan cliche, dreamcatcher single-origin coffee pickled Neutra occupy freegan Pitchfork cray.
-      %p
+      %br
+      %p 
+        = @photo.photo_description
+      %br
       
       /- Display Comments -/
-      -@photo.comments.each do |f|
-        / - next if @photo.comments.new?
+      - @photo.comments.each do |f|
+        - next if f.new_record?
         %blockquote
           = f.comment_text
           %cite
@@ -57,10 +59,11 @@
           = form_for @new_tag, url: tags_path, method: :post do |f| 
             = f.text_field :tag_name
             = hidden_field_tag :photo_id, @photo.id
-            = f.submit "Click to tag", class: "expand small secondary button"
+            = f.submit "Add Your Tag", class: "expand small secondary button"
           
           / - Display Tags -/
           - @photo.tags.each do |t|
+            - next if t.new_record?
             %span.round.alert.label
               = t.tag_name 
       

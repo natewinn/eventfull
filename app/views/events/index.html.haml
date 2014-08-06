@@ -9,10 +9,18 @@
 / - Photo Grid -/
 .top-section
   .row
-    - @photos.each do |f| 
-      .medium-6.large-3.columns
-        %h5 
-          = f.photo_name
-        %img.th{ src: f.image }
+    - if !@photos.exists?
+      .medium-6.medium-centered.columns
+        %h4.text-center No photos? Click Below to get started!
         %p
-        %a.expand.small.secondary.button{ href: photo_path(f) } View Photo
+        %a.expand.large.success.button{ href: "/photos/new" } Upload Your Photos!
+
+    - else
+      - @photos.each do |f| 
+        .small-12.medium-6.large-4.columns
+          %h5 
+            = f.photo_name
+          %img.th{ src: f.image }
+          %p
+          %a.expand.small.secondary.button{ href: photo_path(f) } View Photo
+          = link_to 'Delete Photo', photo_path(f), method: :delete, class: "expand small alert button" 

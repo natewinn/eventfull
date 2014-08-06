@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.1.0'
-gem 'mysql2'
+gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
 gem 'carrierwave'
 gem 'haml'
@@ -12,6 +12,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
+
+gem 'rails_12factor', group: :production
 
 group :development do
 	gem 'spring'
