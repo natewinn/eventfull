@@ -4,7 +4,7 @@ development:
   database: remember_development
   pool: 5
   username: root
-  password:
+  password: 
   socket: /tmp/mysql.sock
 
 test:
@@ -14,5 +14,5 @@ test:
   database: remember_test
   pool: 5
   username: root
-  password:
+  password: 
   socket: /tmp/mysql.sock
